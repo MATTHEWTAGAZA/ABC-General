@@ -28,6 +28,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url('../Design/ABC BG.png'); /* Correct relative path */
+            background-size: cover; /* Make the background fill the screen */
+            background-position: center; /* Center the background */
+            background-repeat: no-repeat;
+            background-color: #f4f4f4; /* Fallback background color */
+            height: 100vh;
+        }
+        .form-container {
+            background: rgba(255, 255, 255, 0.9); /* Slightly transparent white background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            margin: 100px auto; /* Center the form vertically and horizontally */
+        }
+    </style>
 </head>
 <body>
     <div class="form-container">

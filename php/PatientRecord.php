@@ -132,7 +132,7 @@ $result = $conn->query($sql);
         <button onclick="location.href='PatientRegistration.php'">Patient Registration</button>
         <button onclick="location.href='PatientRecord.php'">Patient Record</button>
         <button onclick="location.href='index.php'">Dynamic Chart</button>
-        
+        <button onclick="location.href='VaccinationRecord.php'">Vaccination Records</button>
     </div>
     <div class="main-content">
         <!-- Main content area -->
