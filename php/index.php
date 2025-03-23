@@ -87,7 +87,7 @@ include 'db.php';
                     <option value="line">Line</option>
                     <option value="pie">Pie</option>
                 </select>
-                <button type="button" onclick="updateChart('Baranggay')">Baranggay</button>
+                <button type="button" onclick="updateChart('Barangay')">Barangay</button>
                 <button type="button" onclick="updateChart('Animal')">Animal</button>
                 <button type="button" onclick="updateChart('ExposureType')">Exposure Type</button>
                 <button type="button" onclick="updateChart('BiteSite')">Bite Site</button>

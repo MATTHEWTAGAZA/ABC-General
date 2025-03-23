@@ -6,13 +6,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $Age = sanitizeInput($_POST['Age']);
     $Sex = sanitizeInput($_POST['Sex']);
     $ExposureDate = sanitizeInput($_POST['ExposureDate']);
-    $Baranggay = sanitizeInput($_POST['Baranggay']);
+    $Barangay = sanitizeInput($_POST['Barangay']);
     $Place = sanitizeInput($_POST['Place']);
     $Animal = sanitizeInput($_POST['Animal']);
     $ExposureType = sanitizeInput($_POST['ExposureType']);
     $BiteSite = sanitizeInput($_POST['BiteSite']);
 
-    $sql = "INSERT INTO PatientRecord (PatientName, Age, Sex, ExposureDate, Baranggay, Place, Animal, ExposureType, BiteSite) VALUES ('$PatientName', '$Age', '$Sex', '$ExposureDate', '$Baranggay', '$Place', '$Animal', '$ExposureType', '$BiteSite')";
+    $sql = "INSERT INTO PatientRecord (PatientName, Age, Sex, ExposureDate, Barangay, Place, Animal, ExposureType, BiteSite) VALUES ('$PatientName', '$Age', '$Sex', '$ExposureDate', '$Barangay', '$Place', '$Animal', '$ExposureType', '$BiteSite')";
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Record added successfully!');</script>";
     } else {
@@ -70,26 +70,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <label for="ExposureDate">Exposure Date:</label>
             <input type="date" id="ExposureDate" name="ExposureDate" required>
             
-            <label for="Baranggay">Baranggay:</label>
-            <select id="Baranggay" name="Baranggay" required>
-                <option value="Balayhangin">Balayhangin</option>
-                <option value="Bangyas">Bangyas</option>
-                <option value="Dayap">Dayap</option>
-                <option value="Hanggan">Hanggan</option>
-                <option value="Imok">Imok</option>
-                <option value="Lamot I">Lamot I</option>
-                <option value="Lamot II">Lamot II</option>
-                <option value="Limao">Limao</option>
-                <option value="Mabacan">Mabacan</option>
-                <option value="Masiit">Masiit</option>
-                <option value="Paliparan">Paliparan</option>
-                <option value="Perez">Perez</option>
-                <option value="Prinza">Prinza</option>
-                <option value="Pob. Kanluran">Pob. Kanluran</option>
-                <option value="Pob. Silangan">Pob. Silangan</option>
-                <option value="San Isidro">San Isidro</option>
-                <option value="Santo Tomas">Santo Tomas</option>
+            <label for="Barangay">Barangay:</label>
+            <select id= barangay name="barangay">
+             <option value="Anos">Anos</option>
+             <option value="Bagong Silang">Bagong Silang</option>
+             <option value="Bambang">Bambang</option>
+             <option value="Batong Malake">Batong Malake</option>
+             <option value="Baybayin">Baybayin</option>
+             <option value="Bayog">Bayog</option>
+             <option value="Lalakay">Lalakay</option>
+             <option value="Maahas">Maahas</option>
+             <option value="Malinta">Malinta</option>
+             <option value="Mayondon">Mayondon</option>
+             <option value="San Antonio">San Antonio</option>
+             <option value="Tadlac">Tadlac</option>
+             <option value="Timugan">Timugan</option>
+             <option value="Putho-Tuntungin">Putho-Tuntungin</option>
             </select>
+
             
             <label for="Place">Place:</label>
             <select id="Place" name="Place" required>

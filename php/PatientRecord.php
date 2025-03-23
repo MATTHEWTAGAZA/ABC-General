@@ -5,14 +5,14 @@ include 'db.php';
 $search = '';
 $filterAnimal = '';
 $filterSex = '';
-$filterBaranggay = '';
+$filterBarangay = '';
 $filterPlace = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $search = $_POST['search'];
     $filterAnimal = $_POST['filterAnimal'];
     $filterSex = $_POST['filterSex'];
-    $filterBaranggay = $_POST['filterBaranggay'];
+    $filterBarangay = $_POST['filterBarangay'];
     $filterPlace = $_POST['filterPlace'];
 
     $sql = "SELECT * FROM PatientRecord WHERE (PatientID LIKE '%$search%' OR PatientName LIKE '%$search%')";
@@ -23,8 +23,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($filterSex) {
         $sql .= " AND Sex = '$filterSex'";
     }
-    if ($filterBaranggay) {
-        $sql .= " AND Baranggay = '$filterBaranggay'";
+    if ($filterBarangay) {
+        $sql .= " AND Barangay = '$filterBarangay'";
     }
     if ($filterPlace) {
         $sql .= " AND Place = '$filterPlace'";
@@ -163,26 +163,24 @@ $result = $conn->query($sql);
                     <option value="Other" <?php if ($filterSex == 'Other') echo 'selected'; ?>>Other</option>
                 </select>
 
-                <select id="filterBaranggay" name="filterBaranggay">
-                    <option value="">Filter by Baranggay</option>
-                    <option value="Balayhangin" <?php if ($filterBaranggay == 'Balayhangin') echo 'selected'; ?>>Balayhangin</option>
-                    <option value="Bangyas" <?php if ($filterBaranggay == 'Bangyas') echo 'selected'; ?>>Bangyas</option>
-                    <option value="Dayap" <?php if ($filterBaranggay == 'Dayap') echo 'selected'; ?>>Dayap</option>
-                    <option value="Hanggan" <?php if ($filterBaranggay == 'Hanggan') echo 'selected'; ?>>Hanggan</option>
-                    <option value="Imok" <?php if ($filterBaranggay == 'Imok') echo 'selected'; ?>>Imok</option>
-                    <option value="Lamot I" <?php if ($filterBaranggay == 'Lamot I') echo 'selected'; ?>>Lamot I</option>
-                    <option value="Lamot II" <?php if ($filterBaranggay == 'Lamot II') echo 'selected'; ?>>Lamot II</option>
-                    <option value="Limao" <?php if ($filterBaranggay == 'Limao') echo 'selected'; ?>>Limao</option>
-                    <option value="Mabacan" <?php if ($filterBaranggay == 'Mabacan') echo 'selected'; ?>>Mabacan</option>
-                    <option value="Masiit" <?php if ($filterBaranggay == 'Masiit') echo 'selected'; ?>>Masiit</option>
-                    <option value="Paliparan" <?php if ($filterBaranggay == 'Paliparan') echo 'selected'; ?>>Paliparan</option>
-                    <option value="Perez" <?php if ($filterBaranggay == 'Perez') echo 'selected'; ?>>Perez</option>
-                    <option value="Prinza" <?php if ($filterBaranggay == 'Prinza') echo 'selected'; ?>>Prinza</option>
-                    <option value="Pob. Kanluran" <?php if ($filterBaranggay == 'Pob. Kanluran') echo 'selected'; ?>>Pob. Kanluran</option>
-                    <option value="Pob. Silangan" <?php if ($filterBaranggay == 'Pob. Silangan') echo 'selected'; ?>>Pob. Silangan</option>
-                    <option value="San Isidro" <?php if ($filterBaranggay == 'San Isidro') echo 'selected'; ?>>San Isidro</option>
-                    <option value="Santo Tomas" <?php if ($filterBaranggay == 'Santo Tomas') echo 'selected'; ?>>Santo Tomas</option>
-                </select>
+<select id="filterBarangay" name="filterBarangay">
+    <option value="">Filter by Barangay</option>
+    <option value="Anos" <?php if ($filterBarangay == 'Anos') echo 'selected'; ?>>Anos</option>
+    <option value="Bagong Silang" <?php if ($filterBarangay == 'Bagong Silang') echo 'selected'; ?>>Bagong Silang</option>
+    <option value="Bambang" <?php if ($filterBarangay == 'Bambang') echo 'selected'; ?>>Bambang</option>
+    <option value="Batong Malake" <?php if ($filterBarangay == 'Batong Malake') echo 'selected'; ?>>Batong Malake</option>
+    <option value="Baybayin" <?php if ($filterBarangay == 'Baybayin') echo 'selected'; ?>>Baybayin</option>
+    <option value="Bayog" <?php if ($filterBarangay == 'Bayog') echo 'selected'; ?>>Bayog</option>
+    <option value="Lalakay" <?php if ($filterBarangay == 'Lalakay') echo 'selected'; ?>>Lalakay</option>
+    <option value="Maahas" <?php if ($filterBarangay == 'Maahas') echo 'selected'; ?>>Maahas</option>
+    <option value="Malinta" <?php if ($filterBarangay == 'Malinta') echo 'selected'; ?>>Malinta</option>
+    <option value="Mayondon" <?php if ($filterBarangay == 'Mayondon') echo 'selected'; ?>>Mayondon</option>
+    <option value="San Antonio" <?php if ($filterBarangay == 'San Antonio') echo 'selected'; ?>>San Antonio</option>
+    <option value="Tadlac" <?php if ($filterBarangay == 'Tadlac') echo 'selected'; ?>>Tadlac</option>
+    <option value="Timugan" <?php if ($filterBarangay == 'Timugan') echo 'selected'; ?>>Timugan</option>
+    <option value="Putho-Tuntungin" <?php if ($filterBarangay == 'Putho-Tuntungin') echo 'selected'; ?>>Putho-Tuntungin</option>
+</select>
+
 
                 <select id="filterPlace" name="filterPlace">
                     <option value="">Filter by Place</option>
@@ -205,7 +203,7 @@ $result = $conn->query($sql);
                             <th>Age</th>
                             <th>Sex</th>
                             <th>Exposure Date</th>
-                            <th>Baranggay</th>
+                            <th>Barangay</th>
                             <th>Place</th>
                             <th>Animal</th>
                             <th>Exposure Type</th>
@@ -222,7 +220,7 @@ $result = $conn->query($sql);
                                         <td>{$row['Age']}</td>
                                         <td>{$row['Sex']}</td>
                                         <td>{$row['ExposureDate']}</td>
-                                        <td>{$row['Baranggay']}</td>
+                                        <td>{$row['Barangay']}</td>
                                         <td>{$row['Place']}</td>
                                         <td>{$row['Animal']}</td>
                                         <td>{$row['ExposureType']}</td>

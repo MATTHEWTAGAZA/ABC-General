@@ -4,8 +4,8 @@ include 'db.php';
 $filterType = $_GET['filterType'];
 $data = [];
 
-if ($filterType == 'Baranggay') {
-    $sql = "SELECT Baranggay, COUNT(*) as total FROM PatientRecord GROUP BY Baranggay";
+if ($filterType == 'Barangay') {
+    $sql = "SELECT Barangay, COUNT(*) as total FROM PatientRecord GROUP BY Barangay";
 } elseif ($filterType == 'Animal') {
     $sql = "SELECT Animal, COUNT(*) as total FROM PatientRecord GROUP BY Animal";
 } elseif ($filterType == 'ExposureType') {
