@@ -43,9 +43,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             <button type="submit">Login</button>
         </form>
-            <!-- Forgot Password Link -->
-            <p><a href="forgot_password.php">Forgot Password?</a></p>
-        
             <div class="or-divider">Or</div>
 
         <!-- Removed social login buttons -->

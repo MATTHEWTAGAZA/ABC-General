@@ -12,12 +12,6 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Automatically add reset_token column if it doesn't exist
-$checkColumn = $conn->query("SHOW COLUMNS FROM users LIKE 'reset_token'");
-if ($checkColumn->num_rows == 0) {
-    $conn->query("ALTER TABLE users ADD COLUMN reset_token VARCHAR(255) NULL");
-}
-
 // Helper functions
 function hashPassword($password) {
     return password_hash($password, PASSWORD_DEFAULT);
