@@ -1,0 +1,234 @@
+/* General Styles */
+body {
+    /* Set the font and background color for the entire page */
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.form-container {
+    /* Style for the form container */
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    text-align: center;
+}
+
+h2 {
+    /* Style for headings */
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 24px;
+}
+
+label {
+    /* Style for form labels */
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-size: 14px;
+    text-align: left;
+}
+
+input {
+    /* Style for form inputs */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+input:focus {
+    /* Style for focused inputs */
+    border-color: rgb(88, 2, 94); /* Brand color for focus state */
+    outline: none;
+}
+
+select {
+    /* Style for select elements */
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+}
+
+select:focus {
+    /* Style for focused select elements */
+    border-color: rgb(88, 2, 94); /* Brand color for focus state */
+    outline: none;
+}
+
+button {
+    /* Style for buttons */
+    width: 100%;
+    padding: 12px;
+    background-color: rgb(88, 2, 94); /* Brand color for buttons */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    /* Style for hovered buttons */
+    background-color: rgba(88, 2, 94, 0.9); /* Slightly transparent brand color on hover */
+}
+
+.or-divider {
+    /* Style for divider between sections */
+    margin: 20px 0;
+    color: #999;
+    font-size: 14px;
+    position: relative;
+}
+
+.or-divider::before,
+.or-divider::after {
+    /* Style for lines on either side of the divider */
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ddd;
+    margin: auto;
+}
+
+.or-divider::before {
+    margin-right: 10px;
+}
+
+.or-divider::after {
+    margin-left: 10px;
+}
+
+/* Removed social login styles */
+
+p {
+    /* Style for paragraphs */
+    margin-top: 20px;
+    color: #555;
+    font-size: 14px;
+}
+
+a {
+    /* Style for links */
+    color: rgb(88, 2, 94); /* Brand color for links */
+    text-decoration: none;
+}
+
+a:hover {
+    /* Style for hovered links */
+    text-decoration: underline;
+}
+
+.sidebar {
+    /* Style for the sidebar */
+    width: 250px;
+    background-color: rgb(114, 23, 153);
+    color: white;
+    padding: 15px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+}
+.sidebar h2 {
+    /* Style for sidebar headings */
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Arial', sans-serif;
+    color: white;
+}
+.sidebar button {
+    /* Style for sidebar buttons */
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: rgb(114, 23, 153);
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+.sidebar button:hover {
+    /* Style for hovered sidebar buttons */
+    background-color: rgba(88, 2, 94, 0.9);
+}
+
+.table-container {
+    /* Style for the table container */
+    width: 100%;
+    height: 500px;
+    overflow-y: auto;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.filter-container label, .filter-container select, .filter-container input {
+    flex: 1;
+    min-width: 150px;
+}
+
+.filter-container button {
+    flex: 1;
+    min-width: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: rgb(88, 2, 94);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter-container button:hover {
+    background-color: rgba(88, 2, 94, 0.9);
+}
+
+.filter-container input, .filter-container select {
+    flex: 1;
+    min-width: 150px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.main-content {
+    /* ...existing code... */
+    margin-top: 20px; /* Add margin to the top */
+}
+
+.chart-placeholder {
+    /* ...existing code... */
+    position: relative;
+}
+.chart-placeholder canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
