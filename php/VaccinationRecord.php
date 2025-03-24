@@ -22,7 +22,7 @@ if (!$result) {
         body {
             display: flex;
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #d4efdb; /* Updated background color */
         }
         .main-content {
             margin-left: 300px;
@@ -52,6 +52,17 @@ if (!$result) {
         th, td {
             padding: 10px;
             text-align: left;
+        }
+        .sidebar {
+            background-color: #237854; /* Updated sidebar color */
+            color: white;
+        }
+        .sidebar button {
+            background-color: #237854; /* Updated button color */
+            color: white;
+        }
+        .sidebar button:hover {
+            background-color: #1e6a48; /* Slightly darker shade for hover */
         }
     </style>
 </head>

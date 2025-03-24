@@ -32,11 +32,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         body {
             margin: 0;
             padding: 0;
-            background-image: url('../Design/ABC BG.png'); /* Correct relative path */
             background-size: cover; /* Make the background fill the screen */
             background-position: center; /* Center the background */
             background-repeat: no-repeat;
-            background-color: #f4f4f4; /* Fallback background color */
+            background-color: #d4efdb; /* Updated background color */
             height: 100vh;
         }
         .form-container {
@@ -46,6 +45,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             max-width: 400px;
             margin: 100px auto; /* Center the form vertically and horizontally */
+        }
+        button {
+            background-color: #237854; /* Updated button color */
+            color: white; /* Ensure text is visible */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #1e6a48; /* Slightly darker shade for hover effect */
         }
     </style>
 </head>

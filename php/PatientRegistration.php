@@ -29,6 +29,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Patient Registration</title>
     <link rel="stylesheet" href="../css/style.css">
     <style>
+        body {
+            background-color: #d4efdb; /* Updated background color */
+        }
         .form-container {
             max-width: 800px;
             margin: auto;
@@ -38,15 +41,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             width: 100%;
             margin-bottom: 10px;
         }
+        button {
+            background-color: #237854; /* Updated button color */
+            color: white;
+        }
+        button:hover {
+            background-color: #1e6a48; /* Slightly darker shade for hover */
+        }
         .back-button {
-            background-color: red;
+            background-color: #237854; /* Updated back button color */
             color: white;
             border: none;
             padding: 10px 20px;
             cursor: pointer;
         }
         .back-button:hover {
-            background-color: maroon;
+            background-color: #1e6a48; /* Slightly darker shade for hover */
         }
     </style>
 </head>

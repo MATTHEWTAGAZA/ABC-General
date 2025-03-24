@@ -23,6 +23,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <link rel="stylesheet" href="../css/style.css">
+    <style>
+        body {
+            background-color: #d4efdb; /* Updated background color */
+        }
+        button {
+            background-color: #237854; /* Updated button color */
+            color: white;
+        }
+        button:hover {
+            background-color: #1e6a48; /* Slightly darker shade for hover */
+        }
+    </style>
 </head>
 <body>
     <div class="form-container">

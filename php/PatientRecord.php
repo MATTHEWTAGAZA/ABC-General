@@ -48,7 +48,7 @@ $result = $conn->query($sql);
             /* Set the display and font for the body */
             display: flex;
             font-family: Arial, sans-serif;
-            background-color: #f0f2f5;
+            background-color: #d4efdb; /* Updated background color */
         }
         .main-content {
             /* Style for the main content area */
@@ -112,7 +112,7 @@ $result = $conn->query($sql);
             min-width: 100px;
             padding: 10px;
             margin-bottom: 10px;
-            background-color: rgb(88, 2, 94);
+            background-color: #237854; /* Updated filter button color */
             color: white;
             border: none;
             border-radius: 5px;
@@ -120,7 +120,18 @@ $result = $conn->query($sql);
             font-size: 14px;
         }
         .filter-container button:hover {
-            background-color: rgba(88, 2, 94, 0.9);
+            background-color: #1e6a48; /* Slightly darker shade for hover */
+        }
+        .sidebar {
+            background-color: #237854; /* Updated sidebar color */
+            color: white;
+        }
+        .sidebar button {
+            background-color: #237854; /* Updated button color */
+            color: white;
+        }
+        .sidebar button:hover {
+            background-color: #1e6a48; /* Slightly darker shade for hover */
         }
     </style>
 </head>
