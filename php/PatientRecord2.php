@@ -3,34 +3,26 @@
 include 'db.php';
 
 $search = '';
-$filterAnimal = '';
 $filterSex = '';
 $filterBarangay = '';
-$filterPlace = '';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $search = $_POST['search'];
-    $filterAnimal = $_POST['filterAnimal'];
     $filterSex = $_POST['filterSex'];
     $filterBarangay = $_POST['filterBarangay'];
-    $filterPlace = $_POST['filterPlace'];
 
-    $sql = "SELECT * FROM PatientRecord WHERE (PatientID LIKE '%$search%' OR PatientName LIKE '%$search%')";
+    $sql = "SELECT Patient_ID, Name, Age, Sex, Birth_Date, Barangay, Contact, Medical_Condition 
+            FROM PatientRecord2 
+            WHERE (Patient_ID LIKE '%$search%' OR Name LIKE '%$search%')";
 
-    if ($filterAnimal) {
-        $sql .= " AND Animal = '$filterAnimal'";
-    }
     if ($filterSex) {
         $sql .= " AND Sex = '$filterSex'";
     }
     if ($filterBarangay) {
         $sql .= " AND Barangay = '$filterBarangay'";
     }
-    if ($filterPlace) {
-        $sql .= " AND Place = '$filterPlace'";
-    }
 } else {
-    $sql = "SELECT * FROM PatientRecord";
+    $sql = "SELECT Patient_ID, Name, Age, Sex, Birth_Date, Barangay, Contact, Medical_Condition FROM PatientRecord2";
 }
 
 $result = $conn->query($sql);
@@ -45,20 +37,17 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="../css/style.css">
     <style>
         body {
-            /* Set the display and font for the body */
             display: flex;
             font-family: Arial, sans-serif;
             background-color: #f0f2f5;
         }
         .main-content {
-            /* Style for the main content area */
             margin-left: 300px;
             padding: 20px;
-            width: calc(100% - 250px);
-            margin-top: 20px; /* Add margin to the top */
+            width: calc(100% - 300px); /* Adjust width to fit with sidebar */
+            margin-top: 20px; /* Adjust main content to account for sidebar */
         }
         .chart-placeholder {
-            /* Style for the chart placeholder */
             width: 100%;
             height: 500px;
             background-color: #ecf0f1;
@@ -68,14 +57,12 @@ $result = $conn->query($sql);
             border: 2px dashed #bdc3c7;
         }
         .table-container {
-            /* Style for the table container */
             width: 100%;
             height: 500px;
             overflow-y: auto;
             position: relative;
         }
         table {
-            /* Ensure table fits within the container */
             width: 100%;
             border-collapse: collapse;
         }
@@ -125,6 +112,7 @@ $result = $conn->query($sql);
         .sidebar {
             background-color: #237854; /* Updated sidebar color */
             color: white;
+            margin-top: 0; /* Remove margin for branch header */
         }
         .sidebar button {
             background-color: #237854; /* Updated button color */
@@ -133,14 +121,17 @@ $result = $conn->query($sql);
         .sidebar button:hover {
             background-color: #1e6a48; /* Slightly darker shade for hover */
         }
+        .sidebar button.active {
+            background-color: #1e6a48; /* Same as hover to indicate active state */
+        }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <!-- Sidebar content -->
-        <h2>Patient Record</h2>
-        <button onclick="location.href='dashboard.php'">Dashboard</button> <!-- Dashboard button at the top -->
-        <button onclick="location.href='PatientRecord.php'">Patient Record</button>
+        <h2>ABC-2</h2>
+        <button onclick="location.href='dashboard.php'">Dashboard</button>
+        <button class="active" onclick="location.href='PatientRecord2.php'">Patient Record</button> <!-- Active button -->
         <button onclick="location.href='PatientRegistration.php'">Patient Registration</button>
         <button onclick="location.href='VaccinationRecord.php'">Vaccination Records</button>
         <button onclick="location.href='index.php'">Dynamic Chart</button>
@@ -149,31 +140,14 @@ $result = $conn->query($sql);
     </div>
     <div class="main-content">
         <!-- Main content area -->
-        <form method="POST" action="PatientRecord.php">
+        <form method="POST" action="PatientRecord2.php">
             <div class="filter-container">
                 <input type="text" name="search" placeholder="Search by Patient ID or Name" value="<?php echo htmlspecialchars($search); ?>">
-                
-                <select id="filterAnimal" name="filterAnimal">
-                    <option value="">Filter by Animal</option>
-                    <option value="Dog" <?php if ($filterAnimal == 'Dog') echo 'selected'; ?>>Dog</option>
-                    <option value="Cat" <?php if ($filterAnimal == 'Cat') echo 'selected'; ?>>Cat</option>
-                    <option value="Hamster" <?php if ($filterAnimal == 'Hamster') echo 'selected'; ?>>Hamster</option>
-                    <option value="Rabbit" <?php if ($filterAnimal == 'Rabbit') echo 'selected'; ?>>Rabbit</option>
-                    <option value="Turtle" <?php if ($filterAnimal == 'Turtle') echo 'selected'; ?>>Turtle</option>
-                    <option value="Lizard" <?php if ($filterAnimal == 'Lizard') echo 'selected'; ?>>Lizard</option>
-                    <option value="Fish" <?php if ($filterAnimal == 'Fish') echo 'selected'; ?>>Fish</option>
-                    <option value="Bird" <?php if ($filterAnimal == 'Bird') echo 'selected'; ?>>Bird</option>
-                    <option value="Mouse" <?php if ($filterAnimal == 'Mouse') echo 'selected'; ?>>Mouse</option>
-                    <option value="Pig" <?php if ($filterAnimal == 'Pig') echo 'selected'; ?>>Pig</option>
-                    <option value="Monkey" <?php if ($filterAnimal == 'Monkey') echo 'selected'; ?>>Monkey</option>
-                    <option value="Others" <?php if ($filterAnimal == 'Others') echo 'selected'; ?>>Others</option>
-                </select>
 
                 <select id="filterSex" name="filterSex">
                     <option value="">Filter by Sex</option>
                     <option value="Male" <?php if ($filterSex == 'Male') echo 'selected'; ?>>Male</option>
                     <option value="Female" <?php if ($filterSex == 'Female') echo 'selected'; ?>>Female</option>
-                    <option value="Other" <?php if ($filterSex == 'Other') echo 'selected'; ?>>Other</option>
                 </select>
 
                 <select id="filterBarangay" name="filterBarangay">
@@ -260,14 +234,8 @@ $result = $conn->query($sql);
                     <option value="Santa Monica" <?php if ($filterBarangay == 'Santa Monica') echo 'selected'; ?>>Santa Monica</option>
                 </select>
 
-                <select id="filterPlace" name="filterPlace">
-                    <option value="">Filter by Place</option>
-                    <option value="Indoor" <?php if ($filterPlace == 'Indoor') echo 'selected'; ?>>Indoor</option>
-                    <option value="Outdoor" <?php if ($filterPlace == 'Outdoor') echo 'selected'; ?>>Outdoor</option>
-                </select>
-
                 <button type="submit">Search</button>
-                <button type="button" onclick="window.location.href='PatientRecord.php'">Clear Filters</button>
+                <button type="button" onclick="window.location.href='PatientRecord2.php'">Clear Filters</button>
             </div>
         </form>
         <div class="chart-placeholder">
@@ -277,36 +245,33 @@ $result = $conn->query($sql);
                     <thead>
                         <tr>
                             <th>Patient ID</th>
-                            <th>Patient Name</th>
+                            <th>Name</th>
                             <th>Age</th>
                             <th>Sex</th>
-                            <th>Exposure Date</th>
+                            <th>Birth Date</th>
                             <th>Barangay</th>
-                            <th>Place</th>
-                            <th>Animal</th>
-                            <th>Exposure Type</th>
-                            <th>Bite Site</th>
+                            <th>Contact</th>
+                            <th>Medical Condition</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         if ($result->num_rows > 0) {
                             while($row = $result->fetch_assoc()) {
+                                $medicalCondition = isset($row['Medical_Condition']) ? $row['Medical_Condition'] : 'None';
                                 echo "<tr>
-                                        <td>{$row['PatientID']}</td>
-                                        <td>{$row['PatientName']}</td>
+                                        <td>{$row['Patient_ID']}</td>
+                                        <td>{$row['Name']}</td>
                                         <td>{$row['Age']}</td>
                                         <td>{$row['Sex']}</td>
-                                        <td>{$row['ExposureDate']}</td>
+                                        <td>{$row['Birth_Date']}</td>
                                         <td>{$row['Barangay']}</td>
-                                        <td>{$row['Place']}</td>
-                                        <td>{$row['Animal']}</td>
-                                        <td>{$row['ExposureType']}</td>
-                                        <td>{$row['BiteSite']}</td>
+                                        <td>{$row['Contact']}</td>
+                                        <td>{$medicalCondition}</td>
                                       </tr>";
                             }
                         } else {
-                            echo "<tr><td colspan='10'>No records found</td></tr>";
+                            echo "<tr><td colspan='8'>No records found</td></tr>";
                         }
                         ?>
                     </tbody>

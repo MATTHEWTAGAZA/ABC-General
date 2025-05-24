@@ -5,9 +5,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = sanitizeInput($_POST['username']);
     $email = sanitizeInput($_POST['email']);
     $password = sanitizeInput($_POST['password']);
+    $abc = sanitizeInput($_POST['abc']); // New input for abc
     $hashedPassword = hashPassword($password);
 
-    $sql = "INSERT INTO users (username, password, email) VALUES ('$username', '$hashedPassword', '$email')";
+    $sql = "INSERT INTO users (username, password, email, abc) VALUES ('$username', '$hashedPassword', '$email', '$abc')";
     if ($conn->query($sql) === TRUE) {
         echo "<script>alert('Registration successful!'); window.location.href='login.php';</script>";
     } else {
@@ -48,6 +49,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
+            
+            <label for="abc">Select ABC:</label>
+            <select id="abc" name="abc" required>
+                <option value="ABC-1">ABC-1</option>
+                <option value="ABC-2">ABC-2</option>
+                <option value="ABC-3">ABC-3</option>
+            </select>
             
             <button type="submit">Sign Up</button>
         </form>

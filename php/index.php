@@ -108,11 +108,13 @@ include 'db.php';
     <div class="sidebar">
         <!-- Sidebar content -->
         <h2>Dynamic Chart</h2>
-        <button onclick="location.href='logout.php'">Logout</button>
-        <button onclick="location.href='PatientRegistration.php'">Patient Registration</button>
+        <button onclick="location.href='dashboard.php'">Dashboard</button>
         <button onclick="location.href='PatientRecord.php'">Patient Record</button>
-        <button onclick="location.href='index.php'">Dynamic Chart</button>
+        <button onclick="location.href='PatientRegistration.php'">Patient Registration</button>
         <button onclick="location.href='VaccinationRecord.php'">Vaccination Records</button>
+        <button onclick="location.href='index.php'">Dynamic Chart</button>
+        <button onclick="location.href='report.php'">Generate Report</button>
+        <button onclick="location.href='logout.php'">Logout</button>
     </div>
     <div class="main-content">
         <!-- Main content area -->
@@ -121,7 +123,7 @@ include 'db.php';
         <form id="filterForm">
             <div class="filter-container">
                 <input type="text" id="dateRange" placeholder="Select Date Range">
-                <select id="chartType">
+                <select id="chartType" onchange="updateChartType()"> <!-- Added onchange event -->
                     <option value="bar">Bar</option>
                     <option value="line">Line</option>
                     <option value="pie">Pie</option>
@@ -135,7 +137,6 @@ include 'db.php';
                         <button type="button" onclick="updateChart('BiteSite')">Bite Site</button>
                     </div>
                 </div>
-                <button type="button" onclick="resetFilters()">Reset Filters</button> <!-- Added reset button -->
             </div>
         </form>
         <div class="chart-placeholder" id="chartContainer">
@@ -276,6 +277,11 @@ include 'db.php';
                     }
                 }
             });
+        }
+
+        function updateChartType() {
+            const filterType = 'Barangay'; // Default filter type
+            updateChart(filterType); // Update the chart with the selected type
         }
 
         function resetFilters() {

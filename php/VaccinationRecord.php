@@ -68,12 +68,15 @@ if (!$result) {
 </head>
 <body>
     <div class="sidebar">
+        <!-- Sidebar content -->
         <h2>Vaccination Records</h2>
-        <button onclick="location.href='logout.php'">Logout</button>
-        <button onclick="location.href='PatientRegistration.php'">Patient Registration</button>
+        <button onclick="location.href='dashboard.php'">Dashboard</button> <!-- Dashboard button at the top -->
         <button onclick="location.href='PatientRecord.php'">Patient Record</button>
-        <button onclick="location.href='index.php'">Dynamic Chart</button>
+        <button onclick="location.href='PatientRegistration.php'">Patient Registration</button>
         <button onclick="location.href='VaccinationRecord.php'">Vaccination Records</button>
+        <button onclick="location.href='index.php'">Dynamic Chart</button>
+        <button onclick="location.href='report.php'">Generate Report</button>
+        <button onclick="location.href='logout.php'">Logout</button>
     </div>
     <div class="main-content">
         <h2>Vaccination Records</h2>
